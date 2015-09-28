@@ -1,7 +1,8 @@
-body{
-	background-color: black;
-}
 
+#page1{
+    height: 100vh;
+    background-color: black;
+}
 @font-face {
     font-family: snowboard;
     src: url(snows.woff);
@@ -13,6 +14,7 @@ body{
 }
 
 .text{
+    margin: 10px;
 	font-family: snowboard;
 	font-size: 30px;
 	color: white;
@@ -23,19 +25,21 @@ body{
     opacity: 1;
 }
 .container{
+    height:50vh;
     position: relative;
     left: -2vh;
     border-radius: 120px;
     top: -177px;
-    width: 131vh;
+    width: 100%;
     z-index: 1;
     opacity: .7;
     box-shadow: 0px 0px 120px 0px silver;
 }
 
+
 .snow{
 	  background-repeat: no-repeat;
-	opacity:.1;
+	opacity:.5;
 position: absolute;
 height: 100%;
 width: 100vh;
@@ -51,13 +55,13 @@ width: 100%;
 
 }
 .menu{
-	height: 10vh;
-	top:80vh;
-	left:47%;
-	position: fixed;
-	display: inline-block;
-    alig
-	cursor: pointer !important;
+	    height: auto;
+    width: 10%;
+    top: 80vh;
+    left: 45%;
+    position: fixed;
+    display: inline-block;
+    cursor: pointer !important;
 }
 .menu:hover{
 animation-name:pulse;
@@ -71,31 +75,44 @@ opacity:.5;
    }
 
 
- .left{ background-color: darkgray;
-    background-image: -webkit-gradient(linear,50% 0%,50% 100%,color-stop(0,#3e3e3e),color-stop(1,#333));
-    color: #aaa !important;
-    cursor: pointer !important;
-    	position: fixed;
-    display: inline-block;
+ .left{
     height:7vh;
     top:40vh;
     left:1%;
-    cursor: pointer
 }
 
 
-.right{background-color: #darkgray;
-    background-image: -webkit-gradient(linear,50% 0%,50% 100%,color-stop(0,#3e3e3e),color-stop(1,#333));
-    color: #aaa !important;
+.right{
     cursor: pointer !important;
     	position: fixed;
     display: inline-block;
     height:7vh;
     top:40vh;
-    transform: rotate(180deg);
     right:1%;
-    cursor: pointer
-
+    cursor: pointer;
 }
 .right:hover, .left:hover{
-opacity:.5;}
+    animation-name:pulse;
+    animation-duration:.5s;
+    opacity:.9
+}
+#pageData{
+    height:100vh;
+     background-color: white;
+    box-shadow:inset -70px 0 200px -30px rgba(0,0,0,.75);
+
+}
+@media screen and (device-aspect-ratio: 2/3) {}
+@media screen and (device-aspect-ratio: 40/71) {}
+@media screen and (device-aspect-ratio: 667/375) {}
+@media screen and (device-aspect-ratio: 16/9) {}
+
+hr.style-two {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+.wi{
+    font-size: 60px;
+    padding-bottom: 5px;
+}

@@ -6,7 +6,21 @@
 		<script src="main.js"type="text/javascript"></script>
 <!-- optional font-awesome to have access to icons -->
 		<link href="font-awesome.css" rel="styletheet" type="text/css" />
-
+		<script>
+var x = document.getElementById("demo");
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+function showPosition(position) {
+    x.innerHTML = "Latitude: " + position.coords.latitude + 
+    "<br>Longitude: " + position.coords.longitude; 
+}
+console.log(position)
+</script>
 		<script src="ng-rating.js"></script>
 	
 
@@ -15,25 +29,35 @@
 		<link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
 		<link href="ng-rating.css" rel="stylesheet" type="text/css" />
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.css" rel="stylesheet" type="text/css" />
+
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/font/weathericons-regular-webfont.eot" rel="stylesheet" type="text/css" />
+
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/font/weathericons-regular-webfont.svg" rel="stylesheet" type="text/css"/>
+
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/font/weathericons-regular-webfont.ttf" rel="stylesheet" type="text/css"/>
+
+
+
 		<link rel="stylesheet" type="text/css" href="main.css">
 
 
 		<title>Snow Report</title>
 
-<body ng-controller="homeButton">
-
-		<div>
+<body  ng-controller="homeButton">
+	<div ng-show="page1" id="page1">
+		<!-- 	<div>
 			 <img class="powder" src="images/powder.gif">
 		</div>
-
+ -->
 		<div> 
 			<img class="powder" src="images/SnowGif.gif">
 		</div>
 		<div> 
-			<img type="button" ng-click="click($event)" class="inverted roundMenu menu" src="images/menu.png">
+			<p style="text-align:center"><img type="button" ng-click="click($event)" class="inverted roundMenu menu" src="images/menu.png"></p>
 		</div>
 		<div> 	
-			<img class="left" src="images/leftarrow.png"> <img class="right" src="images/leftarrow.png">
+			 <img ng-click="navpage2()" class="right right:hover inverted" src="images/rightarrow.png">
 		
 		<audio controls>
   			<source src="images/crap.mp3" type="audio/mpeg">
@@ -41,9 +65,9 @@
 		</audio>
 		</div>
 	
-<container>
+		<container>
 		<div ng-show="button1"class="text">
-			<p ng-show="button1" class="text ratemenu"> Rate the Powder <br> <ng-rating ng-model="snows.rating"  editable=true show-grade=false> 
+			<p ng-show="button1" class="text ratemenu"> Rate the Powder <br> <ng-rating ng-model="snows.rating"  editable=true show-grade=false ng-click="navpage2()"> 
 			</ng-rating>
 			</p>
 			
@@ -54,14 +78,35 @@
 	  	</container>	
 		<div ng-repeat = "rating in snows | orderBy:'-rating'"> 
 		</div>	
+	
+	</div>
 
-		
-		
-		
-<!-- container -->
+	<div ng-show="page2" id="pageData">
+		<div>
+			<p class="text2"> THIS IS A TEST OF PAGE 2</p>
+			<hr>
+			<p> More testing  </p>
+		</div>
+		<div>
+			<img ng-click="navpage1()"class="right left left:hover " src="images/leftarrow.png">
+		</div>
+		<div>
+			<img ng-click="navpage3()"class="right right:hover " src="images/rightarrow.png">
+		</div>
+
+
+	</div>
+
+
+		<div ng-show="page3" id="r">
+		<div>
+			<p class="text2"> I love getting to page 3</p>
+		</div>
+
+
+
+
+		</div>
 </body>
-
-
-
 </head>
 	</html>
