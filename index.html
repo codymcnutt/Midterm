@@ -6,21 +6,7 @@
 		<script src="main.js"type="text/javascript"></script>
 <!-- optional font-awesome to have access to icons -->
 		<link href="font-awesome.css" rel="styletheet" type="text/css" />
-		<script>
-var x = document.getElementById("demo");
-function getLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-    } else {
-        x.innerHTML = "Geolocation is not supported by this browser.";
-    }
-}
-function showPosition(position) {
-    x.innerHTML = "Latitude: " + position.coords.latitude + 
-    "<br>Longitude: " + position.coords.longitude; 
-}
-console.log(position)
-</script>
+
 		<script src="ng-rating.js"></script>
 	
 
@@ -44,20 +30,21 @@ console.log(position)
 
 		<title>Snow Report</title>
 
+</head>
 <body  ng-controller="homeButton">
 	<div ng-show="page1" id="page1">
-		<!-- 	<div>
+			<div>
 			 <img class="powder" src="images/powder.gif">
 		</div>
- -->
+
 		<div> 
 			<img class="powder" src="images/SnowGif.gif">
 		</div>
 		<div> 
-			<p style="text-align:center"><img type="button" ng-click="click($event)" class="inverted roundMenu menu" src="images/menu.png"></p>
+			<p ng-hide="button1" style="text-align:center"><img type="button" ng-click="click($event)" class="inverted roundMenu menu" src="images/menu.png"></p>
 		</div>
 		<div> 	
-			 <img ng-click="navpage2()" class="right right:hover inverted" src="images/rightarrow.png">
+			 <img ng-hide="button1" ng-click="navpage2()" class="right right:hover inverted" src="images/rightarrow.png">
 		
 		<audio controls>
   			<source src="images/crap.mp3" type="audio/mpeg">
@@ -67,8 +54,15 @@ console.log(position)
 	
 		<container>
 		<div ng-show="button1"class="text">
-			<p ng-show="button1" class="text ratemenu"> Rate the Powder <br> <ng-rating ng-model="snows.rating"  editable=true show-grade=false ng-click="navpage2()"> 
-			</ng-rating>
+
+			<p ng-show="button1" class="text ratemenu"> Rate the Powder <br> 
+
+			
+			<ng-rating ng-model="snows.rating"  editable=true show-grade=false ng-click="navpage2()"> <br> 
+			</ng-rating> <br> <select ng-model="selectedResort">
+			 <option value="" disabled selected>Select Slopes Here</option>
+			<option data ng-repeat = "resort in resorts" >{{resort.name}}</option>
+			</select>
 			</p>
 			
 			<img class="container" src="images/ironwall.png">
@@ -76,16 +70,21 @@ console.log(position)
 		</div>
 		
 	  	</container>	
-		<div ng-repeat = "rating in snows | orderBy:'-rating'"> 
+		<div ng-repeat = "rating in snowss | orderBy:'-rating'"> 
 		</div>	
 	
 	</div>
 
 	<div ng-show="page2" id="pageData">
 		<div>
-			<p class="text2"> THIS IS A TEST OF PAGE 2</p>
+			<!-- <p class="text2"> {{resort}}</p> -->
 			<hr>
-			<p> More testing  </p>
+			<div> 
+			<p class="weather"> <i class="wi wi-fire" style="120px"></i> Weather Report {{selectedResort}}  </p>
+			<h1>{{selectedResort}}</h1>
+
+
+		<div>
 		</div>
 		<div>
 			<img ng-click="navpage1()"class="right left left:hover " src="images/leftarrow.png">
@@ -94,19 +93,22 @@ console.log(position)
 			<img ng-click="navpage3()"class="right right:hover " src="images/rightarrow.png">
 		</div>
 
+</div>
 
+	</div>
 	</div>
 
 
 		<div ng-show="page3" id="r">
+
 		<div>
-			<p class="text2"> I love getting to page 3</p>
+			<p class="text2"> I love getting to page 3 </p>
 		</div>
-
-
+		<div>
+			<img ng-click="navpage2()"class="right left left:hover " src="images/leftarrow.png">
+		</div>
 
 
 		</div>
 </body>
-</head>
 	</html>
