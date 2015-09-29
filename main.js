@@ -1,13 +1,20 @@
 
 angular.module('myApp', ["ngRating"])
 angular.module('myApp').controller('homeButton', function ($scope) {
+
     $scope.snowss = []
+    $scope.snows = []
+
+
+    
+
     $scope.ratings	=[1, 2, 3, 4, 5]
     $scope.rating =0
     $scope.button1 =false
     $scope.page1=true
     $scope.page2=false
     $scope.page3=false
+
     $scope.resorts=[
     {
         name: "Arapahoe Basin",
@@ -188,9 +195,25 @@ angular.module('myApp').controller('homeButton', function ($scope) {
 
        } 
 
+
     } )
 
 
-    
-  
+function myIP() {
+    if (window.XMLHttpRequest) xmlhttp = new XMLHttpRequest();
+    else xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+
+    xmlhttp.open("GET","http://api.hostip.info/get_html.php",false);
+    xmlhttp.send();
+
+    hostipInfo = xmlhttp.responseText.split("\n");
+
+    for (i=0; hostipInfo.length >= i; i++) {
+        ipAddress = hostipInfo[i].split(":");
+        if ( ipAddress[0] == "IP" ) return ipAddress[1];
+    }
+
+    return false; 
+    console.log(false)
+}
    	
