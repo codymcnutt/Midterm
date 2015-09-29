@@ -3,6 +3,11 @@
     height: 100vh;
     background-color: black;
 }
+#page1.ng-hide{
+         animation-name: slideOutLeft;
+    animation-duration:1s;
+} 
+}
 @font-face {
     font-family: snowboard;
     src: url(snows.woff);
@@ -100,12 +105,10 @@ opacity:.5;
     height:100vh;
      background-color: white;
     box-shadow:inset -70px 0 200px -30px rgba(0,0,0,.75);
-
+    animation-name: slideInRight;
+    animation-duration:1s;
 }
-@media screen and (device-aspect-ratio: 2/3) {}
-@media screen and (device-aspect-ratio: 40/71) {}
-@media screen and (device-aspect-ratio: 667/375) {}
-@media screen and (device-aspect-ratio: 16/9) {}
+
 
 hr.style-two {
     border: 0;
@@ -116,3 +119,8 @@ hr.style-two {
     font-size: 60px;
     padding-bottom: 5px;
 }
+
+@media screen and (device-aspect-ratio: 2/3) {}
+@media screen and (device-aspect-ratio: 40/71) {}
+@media screen and (device-aspect-ratio: 667/375) {}
+@media screen and (device-aspect-ratio: 16/9) {}
