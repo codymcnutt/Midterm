@@ -19,7 +19,7 @@ angular.module('myApp').controller('homeButton', function ($scope) {
     {
         name: "Arapahoe Basin",
         ratings: 0 ,
-        maps: "test of a map",
+        maps: ["maps/abasin.png", "maps/montezumabowl.png"],
         weather: 0
     },
 
@@ -34,7 +34,7 @@ angular.module('myApp').controller('homeButton', function ($scope) {
     {
         name:"Copper" ,
         ratings:0 ,
-        maps: "This is maps", 
+        maps: ["maps/copper mountain1.png", "maps/copper mountain2.png"],
         weather: 0
 
 },
@@ -48,14 +48,14 @@ angular.module('myApp').controller('homeButton', function ($scope) {
     {
         name:"Vail" ,
         ratings:0 ,
-        maps: "This is maps", 
+        maps: ["maps/VailTrailMapBack.png", "maps/VailTrailMapFront.png"], 
         weather: 0
     },
 
     {
         name:"Steamboat" ,
         ratings:0 ,
-        maps: "This is maps" ,
+        maps: ["maps/SteamboatT.png"] ,
         weather: 0
     },
 
@@ -69,7 +69,7 @@ angular.module('myApp').controller('homeButton', function ($scope) {
     {
         name:"Eldora" ,
         ratings:0 ,
-        maps: "This is maps" ,
+        maps: ["maps/eldora.png"] ,
         weather: 0
     },
 
@@ -90,7 +90,7 @@ angular.module('myApp').controller('homeButton', function ($scope) {
       {
         name:"Loveland" ,
         ratings:0 ,
-        maps: "This is maps" ,
+        maps: ["maps/northview.png", "maps/southview.png"],
         weather: 0
     },
 
@@ -100,12 +100,7 @@ angular.module('myApp').controller('homeButton', function ($scope) {
         maps: "This is maps" ,
         weather: 0
     },
-       {
-        name:"Buttermilk" ,
-        ratings:0 ,
-        maps: "This is maps" ,
-        weather: 0
-    },
+
        {
         name:"Monarch" ,
         ratings:0 ,
@@ -152,12 +147,19 @@ angular.module('myApp').controller('homeButton', function ($scope) {
            {
         name:"Purgatory" ,
         ratings:0 ,
-        maps: "This is maps" ,
+        maps: ["maps/purgatory.png"] ,
         weather: 0
     }
     ]
-   
+   // This is an attempt to take rating and put them in to strings for page 2
+    // $scope.conditions =[
 
+    //     {
+    //     1: "Shitty"
+    // }, 
+    //     {
+    //     2:"Not Great"
+    // }. {"Good"}, {"Amazing"}, {"The Best Ever"}]
 
     $scope.location = []
 
@@ -180,11 +182,13 @@ angular.module('myApp').controller('homeButton', function ($scope) {
         $scope.page3= false
     }
     $scope.navpage2 = function($event){
+    // if(selectedResort=true && snows.rating=true){
         $scope.snowss.push($scope.snowss.rating)
         $scope.page1 = false
         $scope.page2 = true
         $scope.page3= false
-    }
+      }
+    // }
     $scope.navpage3 = function($event){
         $scope.page1 = false
         $scope.page2 = false
@@ -199,21 +203,21 @@ angular.module('myApp').controller('homeButton', function ($scope) {
     } )
 
 
-function myIP() {
-    if (window.XMLHttpRequest) xmlhttp = new XMLHttpRequest();
-    else xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+// function myIP() {
+//     if (window.XMLHttpRequest) xmlhttp = new XMLHttpRequest();
+//     else xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
 
-    xmlhttp.open("GET","http://api.hostip.info/get_html.php",false);
-    xmlhttp.send();
+//     xmlhttp.open("GET","http://api.hostip.info/get_html.php",false);
+//     xmlhttp.send();
 
-    hostipInfo = xmlhttp.responseText.split("\n");
+//     hostipInfo = xmlhttp.responseText.split("\n");
 
-    for (i=0; hostipInfo.length >= i; i++) {
-        ipAddress = hostipInfo[i].split(":");
-        if ( ipAddress[0] == "IP" ) return ipAddress[1];
-    }
+//     for (i=0; hostipInfo.length >= i; i++) {
+//         ipAddress = hostipInfo[i].split(":");
+//         if ( ipAddress[0] == "IP" ) return ipAddress[1];
+//     }
 
-    return false; 
-    console.log(false)
-}
+//     return false; 
+//     console.log(false)
+// }
    	

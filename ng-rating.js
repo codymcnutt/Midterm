@@ -25,7 +25,7 @@
             scope.basedOn = 5;
           }
           if (scope.iconClass == null) {
-            scope.iconClass = "fa fa-star fa-2x"
+            scope.iconClass = "fa fa-beer fa-2x"
 
 
 

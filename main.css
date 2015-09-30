@@ -8,11 +8,6 @@
          animation-name: slideOutLeft;
     animation-duration:1s;
 } 
-}
-@font-face {
-    font-family: snowboard;
-    src: url(snows.woff);
-}
 .ratemanu{ 
     display: block;
     margin: 0 auto;
@@ -20,32 +15,32 @@
 }
 
 .text{
-    margin: 10px;
 	font-family: snowboard;
 	font-size: 30px;
 	color: white;
     text-align: center;
-        margin-top: 25vh;
-           position: relative;
-               z-index: 2;
-    opacity: 1;
+    padding: 5vh;
+    padding-top: 10vh;
+    position: relative;
+     z-index: 2;
+    opacity: .9;
+
 }
 .text2{
     text-align: center;
     color: darkgrey
     font-family: snowboard;
     font-size: 40px;
-
 }
 .container{
-    height:50vh;
-    position: relative;
-    left: -2vh;
+    height: 55vh;
+    top: 10vh;
+    position: absolute;
     border-radius: 120px;
-     top: -219px;
     width: 100%;
+    left:-2vh;
     z-index: 1;
-    opacity: .7;
+    opacity: .6;
     box-shadow: 0px 0px 120px 0px silver;
 }
 
@@ -101,7 +96,7 @@ opacity:.5;
     display: inline-block;
     height:7vh;
     top:40vh;
-    right:1%;
+    right:4%;
     cursor: pointer;
 }
 .right:hover, .left:hover{
@@ -110,27 +105,37 @@ opacity:.5;
     opacity:.9
 }
 #pageData{
+    font-family: snownoard;
     height:100vh;
      background-color: white;
+     /* -webkit-filter: invert(1);
+   filter: invert(1);*/
     box-shadow:inset -70px 0 200px -30px rgba(0,0,0,.75);
     animation-name: slideInRight;
     animation-duration:1s;
+
 }
 
 
-hr.style-two {
+.style-two {
     border: 0;
     height: 1px;
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
 }
-.wi{
-    font-size: 120px;
-    padding-bottom: 5px;
+
+.weather{
+    padding-top:30px;
+    font-size: 20px;
+    font-family: snowboard;
+    color: black;
+
 }
 
 
-
-
+@font-face {
+    font-family: snowboard;
+    src: url(snowboard.ttf);
+}
 
 /*
 @media screen and (device-aspect-ratio: 2/3) {}
