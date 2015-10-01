@@ -1,33 +1,29 @@
 
-angular.module('myApp', ["ngRating"])
+angular.module('myApp', ["ngRating", "ngAnimate"])
 angular.module('myApp').controller('homeButton', function ($scope) {
-
-    $scope.snowss = []
-    $scope.snows = []
-
-
-    
-
     $scope.ratings	=[1, 2, 3, 4, 5]
-    $scope.rating =0
     $scope.button1 =false
     $scope.page1=true
     $scope.page2=false
     $scope.page3=false
-
+    $scope.pageAnimIn=false
+     
+   
     $scope.resorts=[
     {
         name: "Arapahoe Basin",
-        ratings: 0 ,
+        ratings: 0,
         maps: ["maps/abasin.png", "maps/montezumabowl.png"],
-        weather: 0
+        weather: "wi wi-rain", 
+        temp: 42
     },
 
     {
         name: "Winter Park",
         ratings:0,
-        maps: "test of other maps",
-        weather: 0
+        maps: ["maps/winterpark.png"],
+        weather: "wi wi-snow",
+        temp: 0
     },
 
 
@@ -35,6 +31,14 @@ angular.module('myApp').controller('homeButton', function ($scope) {
         name:"Copper" ,
         ratings:0 ,
         maps: ["maps/copper mountain1.png", "maps/copper mountain2.png"],
+        weather: "wi wi-fire",
+        temp: 99
+
+},
+  {
+        name:"Brekinridge" ,
+        ratings:0 ,
+        maps: ["maps/brek.png"],
         weather: 0
 
 },
@@ -123,31 +127,31 @@ angular.module('myApp').controller('homeButton', function ($scope) {
            {
         name:"Telluride" ,
         ratings:0 ,
-        maps: "This is maps" ,
+        maps: ["maps/telluride.png"] ,
         weather: 0
     },
            {
         name:"Crested Butte" ,
         ratings:0 ,
-        maps: "This is maps" ,
+        maps: ["maps/crestedbutte.png"],
         weather: 0
     },
            {
         name:"Silverton" ,
         ratings:0 ,
-        maps: "This is maps" ,
+        maps: ["maps/silverton.png"] ,
         weather: 0
     },
            {
         name:"Wolf Creek" ,
         ratings:0 ,
-        maps: "This is maps" ,
+        maps: ["maps/wolf.png"],
         weather: 0
     },
            {
-        name:"Purgatory" ,
+        name:"Purgatory",
         ratings:0 ,
-        maps: ["maps/purgatory.png"] ,
+        maps: ["maps/purgatory.png"],
         weather: 0
     }
     ]
@@ -161,47 +165,35 @@ angular.module('myApp').controller('homeButton', function ($scope) {
     //     2:"Not Great"
     // }. {"Good"}, {"Amazing"}, {"The Best Ever"}]
 
-    $scope.location = []
-
-
-    $scope.homeMenu = function($event){
-                 // $scope.snows.push(snows.rating)   
-    		
-    		}
-           
-		
 
     $scope.click = function($event){
         $scope.button1 = !$scope.button1
         $scope.button1= true
 
     }
+
       $scope.navpage1 = function($event){
         $scope.page1 = true
         $scope.page2 = false
         $scope.page3= false
     }
     $scope.navpage2 = function($event){
-    // if(selectedResort=true && snows.rating=true){
-        $scope.snowss.push($scope.snowss.rating)
+    
         $scope.page1 = false
         $scope.page2 = true
         $scope.page3= false
       }
-    // }
+
     $scope.navpage3 = function($event){
         $scope.page1 = false
         $scope.page2 = false
         $scope.page3 = true 
     }
 
-       $scope.location =function($event){
-
-       } 
-
-
     } )
 
+ 
+    
 
 // function myIP() {
 //     if (window.XMLHttpRequest) xmlhttp = new XMLHttpRequest();

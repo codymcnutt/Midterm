@@ -2,10 +2,11 @@
 <html ng-app="myApp" >
 <head>
 	  <link rel="stylesheet" href="animate.css">
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.5/angular.min.js" type="text/javascript"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.5/angular.js" type="text/javascript"></script>
 
-		<link  href="angular-animate.js" rel="stylesheet" type="text/javascript"/>
-		<script src="main.js"type="text/javascript"></script>
+		<script  src="angular-animate.js" type="text/javascript">
+		</script>
+	
 
 
 <!-- optional font-awesome to have access to icons -->
@@ -16,7 +17,6 @@
 	
 
 		<link href="ng-rating.css" rel="stylesheet" type="text/css" />
-		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 		<link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
 		<link href="ng-rating.css" rel="stylesheet" type="text/css" />
@@ -28,19 +28,16 @@
 
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/font/weathericons-regular-webfont.ttf" rel="stylesheet" type="text/css"/>
 
-
-		 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular-animate.js"></script>
-
-
+		<script src="main.js"type="text/javascript"></script>
 		<link rel="stylesheet" type="text/css" href="main.css">
 
 
 		<title>Snow Report</title>
 
 </head>
-<body ng-controller="homeButton">
+<body ng-controller="homeButton" style="margin:0px;">
 
-	<div ng-show="page1" id="page1">
+	<div ng-show="page1" id="page1" class="pagemenu">
 			<div>
 
 			 <img class="powder" src="images/powder.gif">
@@ -67,10 +64,10 @@
 			<p ng-show="button1" class="text ratemenu"> Rate the Powder <br> 
 
 			
-			<ng-rating ng-model="snows.rating"  editable=true show-grade=false ng-click="navpage2()"> <br> 
+			<ng-rating ng-model="selectedResort.rating"  editable=true show-grade=false ng-click="navpage2()"> <br> 
 			</ng-rating> <br> 
 		
-			<select style="font-size:20px; color: black;" ng-options="resort as 						resort.name for resort in 						resorts" ng-model="									selectedResort">
+			<select style="font-size:20px; color: black;" ng-options="resort as resort.name for resort in resorts" ng-model="selectedResort">
  				<option value="" disabled selected>Select Slopes Here</option>
 			</select>
 			</p>
@@ -88,13 +85,30 @@
 			
 			
 			<p class="weather text2"> {{selectedResort.name}} Data</p>
-
+			<div>
 		
-			<h3 style="margin-left:10vh;"><i class="wi wi-fire" style=" horizontal-align:center; padding:10px; font-size:80px"></i> 62&#176 Active wildfires</h3>
+			<h2 style="margin-left:20vh; font=40px; font-family:snowboard;"> <i class={{selectedResort.weather}} style="horizontal-align:center; padding:10px; font-size:100px"></i> {{selectedResort.temp}}&#176      <br>{{("Current temperature in " + location + " is: " + temp_f)}}</h2>
 
-			<h2 style="margin-left:10vh;">{{selected.rating}} </h3>
+			<p style="weather text2"> The current powder score is </p>
 
-
+			<h2 style="margin-left:20vh; font=40px; font-family:snowboard;"> {{selectedResort.rating}}.0 </h2>
+		<!-- This is the script and text for the API weather uing my key -->
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+// <script>
+// $(document).ready(function($) {
+//   $.ajax({
+//   url : "http://api.wunderground.com/api/3322ac08ab860702/geolookup/conditions/q/CO/Vail.json",
+//   dataType : "jsonp",
+//   success : function(parsed_json) {
+//   var location = parsed_json['location']['city'];
+//   var temp_f = parsed_json['current_observation']['temp_f'];
+//   }
+//   });
+// });
+// </script>
+		
+			<!-- End of weather API here  -->
+</div>
 		
 		<div>
 			<img ng-click="navpage1()"class="right left left:hover " src="images/leftarrow.png">
@@ -113,7 +127,7 @@
 
 		<div>
 			<p class="weather text2">{{selectedResort.name}} Trail Maps</p> 
-			<img data ng-repeat= "maps in selectedResort.maps track by $index" ng-src="{{maps}}">
+			<img class="mappics" data ng-repeat= "maps in selectedResort.maps track by $index" ng-src="{{maps}}">
 		</div>
 		<div>
 			<img ng-click="navpage2()"class="right left left:hover " src="images/leftarrow.png">
