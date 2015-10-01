@@ -64,10 +64,10 @@
 			<p ng-show="button1" class="text ratemenu"> Rate the Powder <br> 
 
 			
-			<ng-rating ng-model="selectedResort.rating"  editable=true show-grade=false ng-click="navpage2()"> <br> 
+			<ng-rating ng-show="selectedResort" ng-model="selectedResort.rating"  editable=true show-grade=false ng-click="navpage2()"> <br> 
 			</ng-rating> <br> 
 		
-			<select style="font-size:20px; color: black;" ng-options="resort as resort.name for resort in resorts" ng-model="selectedResort">
+			<select ng-change= "getWeather()" style="font-size:20px; color: black;" ng-options="resort as resort.name for resort in resorts" ng-model="selectedResort" >
  				<option value="" disabled selected>Select Slopes Here</option>
 			</select>
 			</p>
@@ -85,29 +85,15 @@
 			
 			
 			<p class="weather text2"> {{selectedResort.name}} Data</p>
-			<div>
-		
-			<h2 style="margin-left:20vh; font=40px; font-family:snowboard;"> <i class={{selectedResort.weather}} style="horizontal-align:center; padding:10px; font-size:100px"></i> {{selectedResort.temp}}&#176      <br>{{("Current temperature in " + location + " is: " + temp_f)}}</h2>
+			<div >
+			<img class="icon" src={{selectedResort.icon}}>
+			<h2 class={{selectedResort.weather}} style="margin-left:15vh; font=30px; font-family:snowboard;horizontal-align:center; padding:5px; display:inline"> {{selectedResort.temp}}&#176;  </h2>
+</div>
+		<div >
+			<p style="font-family: snowboard; padding-top: 30px; text-align: center; display: inherit;"> Current Powder Score: </p>
 
-			<p style="weather text2"> The current powder score is </p>
-
-			<h2 style="margin-left:20vh; font=40px; font-family:snowboard;"> {{selectedResort.rating}}.0 </h2>
-		<!-- This is the script and text for the API weather uing my key -->
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
-// <script>
-// $(document).ready(function($) {
-//   $.ajax({
-//   url : "http://api.wunderground.com/api/3322ac08ab860702/geolookup/conditions/q/CO/Vail.json",
-//   dataType : "jsonp",
-//   success : function(parsed_json) {
-//   var location = parsed_json['location']['city'];
-//   var temp_f = parsed_json['current_observation']['temp_f'];
-//   }
-//   });
-// });
-// </script>
-		
-			<!-- End of weather API here  -->
+			<h2 style="font-family: snowboard; padding-top: 5px; text-align: center; display: inherit;"> {{selectedResort.rating}}.0 </h2>
+		</div>
 </div>
 		
 		<div>
@@ -123,7 +109,7 @@
 	</div>
 
 
-		<div ng-show="page3" id="pageData">
+		<div ng-show="page3" class= "page3">
 
 		<div>
 			<p class="weather text2">{{selectedResort.name}} Trail Maps</p> 

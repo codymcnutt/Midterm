@@ -4,12 +4,12 @@
     height: 100vh;
     background-color: black;
 }
-.page1.ng-hide{
+..ng-hide{
          animation-name: slideOutLeft;
     animation-duration:1s;
 
 } 
-.page1.ng-show{
+..ng-show{
     animation-name:slideInleft;
     animation-duration:2s;
 }
@@ -18,6 +18,21 @@
     display: block;
     margin: 0 auto;
  
+}
+.icon{
+    position: relative;
+    top: 10vh;
+    left: 10%;
+    width: 150px;
+    height: 150px;
+}
+.temp{
+   left: 21px;
+   display: inline-block;
+    position: absolute;
+    font-family: snowboard;
+    left: 40%;
+    top: 30%;
 }
 
 .text{
@@ -121,10 +136,27 @@ opacity:.5;
     animation-duration:1s;
 
 }
+/*.page3{
+    transition: all 1s ease;
+    left: 0%;
+    position: relative;
+}
+.page3.ng-hide{
+    left: 100%;
+
+}
+
+#pageData.ng-hide{ 
+   animation-name: slideOutLeft;
+    animation-duration:1s;
+}*/
+
+
 .fa{
     padding:10px;
 
 }
+
 .style-two {
     border: 0;
     height: 1px;

@@ -1,22 +1,43 @@
 
 angular.module('myApp', ["ngRating", "ngAnimate"])
-angular.module('myApp').controller('homeButton', function ($scope) {
+angular.module('myApp').controller('homeButton', function ($scope, $http) {
     $scope.ratings	=[1, 2, 3, 4, 5]
     $scope.button1 =false
     $scope.page1=true
     $scope.page2=false
     $scope.page3=false
     $scope.pageAnimIn=false
-     
+
+
+
+
+    $scope.getWeather = function(){
+  var urlString = 'http://api.wunderground.com/api/3322ac08ab860702/geolookup/conditions/q/CO/' + $scope.selectedResort.name +'.json'
+$http({
+  method: 'GET',
+  url: urlString
+}).then(function successCallback(response) {
+
+
+    var current_observation = response.data.current_observation
+    $scope.selectedResort.temp=current_observation.temp_f
+    $scope.selectedResort.icon=current_observation.icon_url
+
+     console.log(current_observation)
+  }, function errorCallback(error) {
+    // called asynchronously if an error occurs
+    // or server returns response with an error status.
+ 
+  });
+
+}
+
+
+
+
+
    
     $scope.resorts=[
-    {
-        name: "Arapahoe Basin",
-        ratings: 0,
-        maps: ["maps/abasin.png", "maps/montezumabowl.png"],
-        weather: "wi wi-rain", 
-        temp: 42
-    },
 
     {
         name: "Winter Park",
@@ -28,15 +49,15 @@ angular.module('myApp').controller('homeButton', function ($scope) {
 
 
     {
-        name:"Copper" ,
+        name:"Copper Mountain" ,
         ratings:0 ,
         maps: ["maps/copper mountain1.png", "maps/copper mountain2.png"],
         weather: "wi wi-fire",
-        temp: 99
+        temp:0 
 
 },
   {
-        name:"Brekinridge" ,
+        name:"Breckenridge" ,
         ratings:0 ,
         maps: ["maps/brek.png"],
         weather: 0
@@ -45,7 +66,7 @@ angular.module('myApp').controller('homeButton', function ($scope) {
       {
         name:"Keystone" ,
         ratings:0 ,
-        maps: "This is maps" ,
+        maps: ["maps/keystone.png"] ,
         weather: 0
     },
 
@@ -63,31 +84,17 @@ angular.module('myApp').controller('homeButton', function ($scope) {
         weather: 0
     },
 
-    {
-        name:"Cortez" ,
-        ratings:0 ,
-        maps: "This is maps" ,
-        weather: 0
-    },
-
-    {
-        name:"Eldora" ,
-        ratings:0 ,
-        maps: ["maps/eldora.png"] ,
-        weather: 0
-    },
-
       {
-        name:"Ski Grandby Ranch" ,
+        name:"Granby" ,
         ratings:0 ,
-        maps: "This is maps" ,
+        maps: ["maps/granby.png"] ,
         weather: 0
     },
 
       {
         name:"Aspen Highlands" ,
         ratings:0 ,
-        maps: "This is maps" ,
+        maps: ["maps/aspenhighlands.png"] ,
         weather: 0
     },
 
@@ -99,29 +106,22 @@ angular.module('myApp').controller('homeButton', function ($scope) {
     },
 
       {
-        name:"Buttermilk" ,
+        name:"Aspen Snowmass" ,
         ratings:0 ,
-        maps: "This is maps" ,
+        maps: ["maps/snowmass.png"] ,
         weather: 0
     },
 
        {
         name:"Monarch" ,
         ratings:0 ,
-        maps: "This is maps" ,
+        maps: ["maps/monarch.png"] ,
         weather: 0
     },
-       {
-        name:"Sunlight" ,
-        ratings:0 ,
-        maps: "This is maps" ,
-        weather: 0
-    },
-
         {
         name:"Powderhorn" ,
         ratings:0 ,
-        maps: "This is maps" ,
+        maps: ["maps/powderhorns.png"] ,
         weather: 0
     },
            {
@@ -142,12 +142,7 @@ angular.module('myApp').controller('homeButton', function ($scope) {
         maps: ["maps/silverton.png"] ,
         weather: 0
     },
-           {
-        name:"Wolf Creek" ,
-        ratings:0 ,
-        maps: ["maps/wolf.png"],
-        weather: 0
-    },
+        
            {
         name:"Purgatory",
         ratings:0 ,
@@ -156,14 +151,14 @@ angular.module('myApp').controller('homeButton', function ($scope) {
     }
     ]
    // This is an attempt to take rating and put them in to strings for page 2
-    // $scope.conditions =[
+   //  $scope.conditions =[
 
-    //     {
-    //     1: "Shitty"
-    // }, 
-    //     {
-    //     2:"Not Great"
-    // }. {"Good"}, {"Amazing"}, {"The Best Ever"}]
+   //      {
+   //      1: "Shitty"
+   //  }, 
+   //      {
+   //      2:"Not Great"
+   //  }. {"Good"}, {"Amazing"}, {"The Best Ever"}]
 
 
     $scope.click = function($event){
@@ -178,10 +173,11 @@ angular.module('myApp').controller('homeButton', function ($scope) {
         $scope.page3= false
     }
     $scope.navpage2 = function($event){
-    
-        $scope.page1 = false
-        $scope.page2 = true
-        $scope.page3= false
+        if($scope.selectedResort){
+            $scope.page1 = false
+            $scope.page2 = true
+            $scope.page3= false
+        }
       }
 
     $scope.navpage3 = function($event){
